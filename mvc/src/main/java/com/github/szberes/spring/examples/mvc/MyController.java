@@ -18,40 +18,24 @@ package com.github.szberes.spring.examples.mvc;
 
 import com.github.szberes.spring.examples.mvc.domain.Message;
 import com.github.szberes.spring.examples.mvc.repository.MessageRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.util.Date;
 
 @RequestMapping(value = "/")
 @Controller
 public class MyController {
 
-	public static class MessageRestDto {
-		private String username;
-		private String message;
-
-		public String getUsername() {
-			return username;
-		}
-
-		public void setUsername(String username) {
-			this.username = username;
-		}
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-	}
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(MyController.class);
 	@Autowired
 	private MessageRepository messageRepository;
 
@@ -63,7 +47,11 @@ public class MyController {
 
 
 	@RequestMapping(value = "messages", method = RequestMethod.POST)
-	public String newMessage(MessageRestDto body) {
+	public String newMessage(@Valid MessageRestDto body, Errors errors) {
+		if (errors.hasErrors()) {
+			LOGGER.info(errors.getAllErrors().toString());
+			return "redirect:/messages/";
+		}
 		messageRepository.addMessage(new Message(body.getMessage(), new Date(), body.getUsername()));
 		return "redirect:/messages/";
 	}
