@@ -6,12 +6,13 @@
 
 	<groupId>com.github.szberes.spring</groupId>
 	<artifactId>spring</artifactId>
-	<packaging>pom</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
 	<modules>
 		<module>spring-boot-HelloWorld</module>
 		<module>aop</module>
+		<module>mvc</module>
 	</modules>
 
 
