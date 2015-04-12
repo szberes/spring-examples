@@ -10,10 +10,11 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>spring-boot-HelloWorld</module>
 		<module>aop</module>
+		<module>beans</module>
 		<module>mvc</module>
 		<module>security</module>
+		<module>spring-boot-HelloWorld</module>
 	</modules>
 
 	<properties>
