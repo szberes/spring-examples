@@ -13,7 +13,36 @@
 		<module>spring-boot-HelloWorld</module>
 		<module>aop</module>
 		<module>mvc</module>
+		<module>security</module>
 	</modules>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.code.sortpom</groupId>
+				<artifactId>maven-sortpom-plugin</artifactId>
+				<version>2.3.0</version>
+				<configuration>
+					<keepBlankLines>true</keepBlankLines>
+					<sortDependencies>scope,groupId,artifactId</sortDependencies>
+					<predefinedSortOrder>custom_1</predefinedSortOrder>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<!-- Use tab instead of space -->
+					<nrOfIndentSpace>-1</nrOfIndentSpace>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>sort</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
