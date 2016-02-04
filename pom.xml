@@ -15,6 +15,7 @@
 		<module>mvc</module>
 		<module>security</module>
 		<module>spring-boot-HelloWorld</module>
+		<module>etc</module>
 	</modules>
 
 	<properties>
