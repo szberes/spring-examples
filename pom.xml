@@ -16,6 +16,7 @@
 		<module>security</module>
 		<module>spring-boot-HelloWorld</module>
 		<module>etc</module>
+		<module>cloud</module>
 	</modules>
 
 	<properties>
